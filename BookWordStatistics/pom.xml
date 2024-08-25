@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.brachium.bookwordstatistics</groupId>
+    <artifactId>BookWordStatistics</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <exec.mainClass>org.brachium.bookwordstatistics.BookWordStatistics</exec.mainClass>
+    </properties>
+    <dependencies>
+     <dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.0.0</version>
+  </dependency>
+  </dependencies>
+    <build>
+  <plugins>
+  <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.0.0</version>
+    <configuration>
+        <mainClass>org.brachium.bookwordstatistics.BookWordStatistics</mainClass>
+        <arguments>
+            <argument>sql</argument>
+            <argument>C:\Users\burak\Desktop\Coding\BookWordStatistics\src\main\java\org\brachium\bookwordstatistics\Paths of Darkness.txt</argument>
+            <argument>jdbc:mysql://localhost:3306/book_analysis</argument>
+            <argument>Paths_of_Darkness</argument>
+            <argument>root</argument>
+            <argument>admin</argument>
+        </arguments>
+    </configuration>
+</plugin>
+</plugins>
+</build>
+</project>

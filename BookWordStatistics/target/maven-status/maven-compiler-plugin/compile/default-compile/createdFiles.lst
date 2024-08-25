@@ -1,0 +1,6 @@
+org\brachium\bookwordstatistics\Book.class
+org\brachium\bookwordstatistics\TextFile.class
+org\brachium\bookwordstatistics\BookWordStatistics.class
+org\brachium\bookwordstatistics\Terminal.class
+org\brachium\bookwordstatistics\Sql.class
+org\brachium\bookwordstatistics\Parser.class
