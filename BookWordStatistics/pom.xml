@@ -26,12 +26,12 @@
     <configuration>
         <mainClass>org.brachium.bookwordstatistics.BookWordStatistics</mainClass>
         <arguments>
-            <argument>sql</argument>
-            <argument>C:\Users\burak\Desktop\Coding\BookWordStatistics\src\main\java\org\brachium\bookwordstatistics\Paths of Darkness.txt</argument>
-            <argument>jdbc:mysql://localhost:3306/book_analysis</argument>
-            <argument>Paths_of_Darkness</argument>
-            <argument>root</argument>
-            <argument>admin</argument>
+            <argument>sql-or-textfile</argument>
+            <argument>-book-</argument>
+            <argument>sqlurl-or-txtresultfile</argument>
+            <argument>-tablename-</argument>
+            <argument>-username-</argument>
+            <argument>-password-</argument>
         </arguments>
     </configuration>
 </plugin>
