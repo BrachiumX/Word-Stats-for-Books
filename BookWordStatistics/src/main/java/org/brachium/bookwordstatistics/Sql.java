@@ -11,30 +11,29 @@ import java.sql.Statement;
 public class Sql {
 
     static final String totalTrackerTableName = "Total";
-    
-    public static void run(File inputFile,String url,String tableName,String user,String password){
+
+    public static void run(File inputFile, String url, String tableName, String user, String password) {
 
         Book book = new Book();
-        
+
         BufferedReader br = null;
-        try{
+        try {
             br = new BufferedReader(new FileReader(inputFile));
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Parser parser = new Parser(book);
         parser.parse(br);
-        
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        try(Connection connection = DriverManager.getConnection(url,user,password)) {
-            try(Statement statement = connection.createStatement()){
-                
+        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+            try (Statement statement = connection.createStatement()) {
+
                 StringBuilder str = new StringBuilder();
 
                 str.append("create table ");
@@ -53,7 +52,7 @@ public class Sql {
 
                 str = new StringBuilder();
 
-                for(String a:book.getWords()){
+                for (String a : book.getWords()) {
 
                     //The inserts have to be sent one by one since some edge cases cause SQL syntax errors which would affect
                     // other rows if the insert was done in parallel.
@@ -67,15 +66,14 @@ public class Sql {
                     str.append("\",");
                     str.append(book.getFrequency().get(a));
                     str.append(",");
-                    if(book.getUppercase().get(a)==null){
+                    if (book.getUppercase().get(a) == null) {
                         str.append(0);
                         str.append(",");
                         str.append(book.getFrequency().get(a));
-                    }
-                    else{
+                    } else {
                         str.append(book.getUppercase().get(a));
                         str.append(",");
-                        str.append(book.getFrequency().get(a)-book.getFrequency().get(a));
+                        str.append(book.getFrequency().get(a) - book.getFrequency().get(a));
                     }
                     str.append(",");
                     str.append(book.getFirstOccurence().get(a));
@@ -121,7 +119,7 @@ public class Sql {
 
     }
 
-    public static StringBuilder restart(String tableName){
+    public static StringBuilder restart(String tableName) {
         StringBuilder str = new StringBuilder();
 
         str.append("insert into ");
